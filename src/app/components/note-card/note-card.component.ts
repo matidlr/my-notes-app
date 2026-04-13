@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { NoteService } from '../../services/note.service';
+import Note from '../../../models/Note';
 
 @Component({
   selector: 'app-note-card',
@@ -7,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './note-card.component.css'
 })
 export class NoteCardComponent {
-
+  note = input<Note>();
 }
