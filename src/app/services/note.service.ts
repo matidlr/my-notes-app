@@ -1,9 +1,32 @@
 import { Injectable } from '@angular/core';
+import Note from '../../models/Note';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
+  notes: Note[];
+  constructor() {
+    this.notes = [
+      {
+        id: this.createId(),
+        title: "Doctor appointment",
+        marked: false
+      },
+      {
+        id: this.createId(),
+        title: "Go to the gym",
+        marked: true
+      },
+      {
+        id: this.createId(),
+        title: "Study for the exam",
+        marked: true
+      }
+    ]
+   }
 
-  constructor() { }
+   createId = () => {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2);
+   }
 }
