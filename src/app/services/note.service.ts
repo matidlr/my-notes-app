@@ -1,29 +1,19 @@
 import { Injectable } from '@angular/core';
 import Note from '../../models/Note';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NoteService {
+  readonly API_URL = "https://cabec234f8b4886ab440.free.beeceptor.com";
   notes: Note[];
-  constructor() {
-    this.notes = [
-      {
-        id: this.createId(),
-        title: "Doctor appointment",
-        marked: false
-      },
-      {
-        id: this.createId(),
-        title: "Go to the gym",
-        marked: true
-      },
-      {
-        id: this.createId(),
-        title: "Study for the exam",
-        marked: true
-      }
-    ]
+  constructor(private http: HttpClient) {
+    this.notes = []
+   }
+
+   getNotes() {
+    return this.http.get<Note[]>(this.API_URL)
    }
 
    updateTitle(id: string, newTitle: string) {
@@ -41,7 +31,7 @@ export class NoteService {
    }
 
    createNote(note: Note) {
-    this.notes.push(note);
+    this.notes.unshift(note);
    }
 
    createId = () => {

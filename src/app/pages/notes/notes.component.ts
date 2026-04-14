@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { NoteService } from '../../services/note.service';
 import { NoteCardComponent } from '../../components/note-card/note-card.component';
@@ -10,7 +10,22 @@ import { CreateNoteComponent } from '../../components/create-note/create-note.co
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.css'
 })
-export class NotesComponent {
+export class NotesComponent implements OnInit {
   constructor( public noteService: NoteService) {}
+
+  ngOnInit(): void {
+      this.getNotes();
+  }
+
+  getNotes() {
+    this.noteService.getNotes().subscribe({
+      next: (data) => {
+        this.noteService.notes = data;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+  }
 
 }

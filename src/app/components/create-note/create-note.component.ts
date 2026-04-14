@@ -23,5 +23,6 @@ export class CreateNoteComponent {
       marked: false
     }
     this.noteService.createNote(newNote);
+    this.noteTitle = "";
   }
 }
