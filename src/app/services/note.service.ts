@@ -6,14 +6,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NoteService {
-  readonly API_URL = "https://cabec234f8b4886ab440.free.beeceptor.com";
+  readonly API_URL = "https://ca4a853b1a9c91f577ad.free.beeceptor.com/api/note";
+
   notes: Note[];
   constructor(private http: HttpClient) {
     this.notes = []
    }
 
    getNotes() {
-    return this.http.get<Note[]>(this.API_URL)
+    return this.http.get<Note[]>(this.API_URL);
    }
 
    updateTitle(id: string, newTitle: string) {
