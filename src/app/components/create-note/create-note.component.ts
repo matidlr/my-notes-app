@@ -22,7 +22,18 @@ export class CreateNoteComponent {
       title: this.noteTitle,
       marked: false
     }
-    this.noteService.createNote(newNote);
-    this.noteTitle = "";
+    this.createNote(newNote);
+  }
+
+  createNote(newNote: Note) {
+    this.noteService.createNote(newNote).subscribe({
+      next: () => {
+        this.noteTitle = "";
+      },
+      error: (e) => {
+        console.log(e);
+        
+      }
+    })
   }
 }

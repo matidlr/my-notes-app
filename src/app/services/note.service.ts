@@ -32,7 +32,7 @@ export class NoteService {
    }
 
    createNote(note: Note) {
-    this.notes.unshift(note);
+    return this.http.post<Note>(this.API_URL, note);
    }
 
    createId = () => {
