@@ -41,7 +41,7 @@ export class CreateNoteComponent {
   getNotes() {
     this.noteService.getNotes().subscribe({
       next: (data) => {
-        this.noteService.notes = data;
+        this.noteService.notes = data.reverse();
       },
       error: (e) => {
         console.log(e);
