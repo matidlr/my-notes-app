@@ -11,6 +11,8 @@ import { CreateNoteComponent } from '../../components/create-note/create-note.co
   styleUrl: './notes.component.css'
 })
 export class NotesComponent implements OnInit {
+  hasError: boolean = false;
+
   constructor( public noteService: NoteService) {}
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class NotesComponent implements OnInit {
       },
       error: (e) => {
         console.log(e);
+        this.hasError = true;
       }
     })
   }

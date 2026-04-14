@@ -2,15 +2,19 @@
 
 <section id="notes-page" >
     <h2>Notes</h2>
+    @if (hasError) {
+        <h2>No se han podido cargar las notas.</h2>
+    } @else {
 
-    <ul class="note-list" >
-        <li>
-            <app-create-note></app-create-note>
-        </li>
-        @for (note of noteService.notes; track note.id) {
+        <ul class="note-list" >
             <li>
-                <app-note-card [note]="note"></app-note-card>
+                <app-create-note></app-create-note>
             </li>
-        }
-    </ul>
+            @for (note of noteService.notes; track note.id) {
+                <li>
+                    <app-note-card [note]="note"></app-note-card>
+                </li>
+            }
+        </ul>
+    }
 </section>
