@@ -10,4 +10,19 @@ import Note from '../../../models/Note';
 })
 export class NoteCardComponent {
   note = input<Note>();
+
+  constructor(public noteService: NoteService) {}
+
+  updateTitle(id: string | undefined, e: Event) {
+    if(!id) return;
+    const inputHtml = e.target as HTMLInputElement;
+
+    this.noteService.updateTitle(id, inputHtml.value)
+  }
+
+  updateMarked(id: string | undefined) {
+    if (!id) return;
+    this.noteService.updateMarked(id);
+
+  }
 }
