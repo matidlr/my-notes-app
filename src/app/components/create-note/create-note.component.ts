@@ -28,11 +28,23 @@ export class CreateNoteComponent {
   createNote(newNote: Note) {
     this.noteService.createNote(newNote).subscribe({
       next: () => {
+        this.getNotes();
         this.noteTitle = "";
       },
       error: (e) => {
         console.log(e);
         
+      }
+    })
+  }
+
+  getNotes() {
+    this.noteService.getNotes().subscribe({
+      next: (data) => {
+        this.noteService.notes = data;
+      },
+      error: (e) => {
+        console.log(e);
       }
     })
   }
