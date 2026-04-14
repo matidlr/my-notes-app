@@ -22,5 +22,6 @@ export class CreateNoteComponent {
       title: this.noteTitle,
       marked: false
     }
+    this.noteService.createNote(newNote);
   }
 }
