@@ -12,6 +12,7 @@ import { CreateNoteComponent } from '../../components/create-note/create-note.co
 })
 export class NotesComponent implements OnInit {
   hasError: boolean = false;
+  isLoading: boolean = true;
 
   constructor( public noteService: NoteService) {}
 
@@ -23,6 +24,8 @@ export class NotesComponent implements OnInit {
     this.noteService.getNotes().subscribe({
       next: (data) => {
         this.noteService.notes = data.reverse();
+        this.isLoading = false;
+        this.hasError = false;
       },
       error: (e) => {
         console.log(e);

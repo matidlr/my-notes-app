@@ -4,7 +4,10 @@
     <h2>Notes</h2>
     @if (hasError) {
         <h2>No se han podido cargar las notas.</h2>
-    } @else {
+    } @else if (isLoading) {
+        <h2>Cargando...</h2>
+    } 
+    @else {
 
         <ul class="note-list" >
             <li>
